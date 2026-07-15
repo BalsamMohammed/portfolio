@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/portfolio/',
     publicDir: 'app/applet/public',
     plugins: [react(), tailwindcss()],
     resolve: {
