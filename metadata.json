@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Balsam Baroud Portfolio",
+  "description": "An award-winning caliber graphic design portfolio for Balsam Baroud, showcasing flagship event visual identities, print design, and brand experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

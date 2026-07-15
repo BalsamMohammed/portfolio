@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&family=Inter:wght@300..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Tajawal", system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --color-ink: #080808;
+  --color-ink-2: #121013;
+  --color-ink-3: #1a1a1a;
+  --color-paper: #E0E0E0;
+  --color-accent: #DFBEE6;
+  --color-accent-dark: #C7B9FA;
+  --color-champagne: #D8B7C4;
+  --color-muted: #949494;
+  --color-gold: #E5C384;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(223, 190, 230, 0.25);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(223, 190, 230, 0.5);
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Base HTML styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  background-color: #080808;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #080808;
+}
+
+/* Film Grain Overlay */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.055;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* RTL Typography & Font-Face */
+@font-face {
+  font-family: 'Thmanyah Serif Text';
+  src: url('/assets/fonts/Thmaniah-Serif.woff2') format('woff2'),
+       url('/assets/fonts/Thmaniah-Serif.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Thmaniah';
+  src: url('/assets/fonts/Thmaniah-Regular.woff2') format('woff2'),
+       url('/assets/fonts/Thmaniah-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+[dir="rtl"] {
+  --font-sans: "Thmaniah", "Thmanyah Serif Text", "Tajawal", "Cairo", sans-serif;
+  --font-serif: "Thmanyah Serif Text", "Thmaniah", Georgia, serif;
+  --font-display: "Thmaniah", "Thmanyah Serif Text", sans-serif;
+  font-family: "Thmanyah Serif Text", "Thmaniah", "Tajawal", "Cairo", "Inter", sans-serif;
+}
+
+/* Animated Grid Lines Background */
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(218, 149, 229, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(218, 149, 229, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+  pointer-events: none;
+}
+
+/* Elegant Text Shimmer */
+.shimmer-text {
+  background: linear-gradient(135deg, #E0E0E0 30%, #DFBEE6 60%, #C7B9FA 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Custom Cursor styles */
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background-color: #DFBEE6;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.custom-cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(223, 190, 230, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background-color 0.3s, transform 0.08s ease-out;
+}
+
+/* Slow Ambient Drifting Animations */
+@keyframes float-ambient {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-drift-slow {
+  animation: float-ambient 25s ease-in-out infinite;
+}
+
+.animate-drift-slower {
+  animation: float-ambient 35s ease-in-out infinite reverse;
+}
+
+/* Magnetic tilt adjustments */
+.perspective-container {
+  perspective: 1000px;
+}
+
+/* Hide navigation links on mobile and show drawer */
+@media (max-width: 768px) {
+  .navlinks {
+    display: none;
+  }
+}
